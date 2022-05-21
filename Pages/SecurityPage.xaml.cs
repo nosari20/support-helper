@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,6 +29,13 @@ namespace SupportHelper.Pages
         public SecurityPage()
         {
             InitializeComponent();
+        }
+
+        private static bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         protected async void ContentLoaded(object sender, RoutedEventArgs e)
@@ -55,7 +63,10 @@ namespace SupportHelper.Pages
         private String GetBitLocker()
         {
 
-
+            if (!IsAdministrator())
+            {
+                return "Administrative privileges required.";
+            }
 
             PowerShell PowerShellInst = PowerShell.Create();
             PowerShellInst.AddScript(@"
@@ -104,7 +115,6 @@ namespace SupportHelper.Pages
                         {
                             output += "\t" + KeyProtectorTypes.Get((string)obj2.GetValue("KeyProtectorType")) + "\n";
                         }
-                        output += "\n";
                         output += "LockStatus: " + obj.Properties["LockStatus"].Value + "\n";
                         output += "MountPoint: " + obj.Properties["MountPoint"].Value + "\n";
                         output += "ProtectionStatus: " + obj.Properties["ProtectionStatus"].Value + "\n";

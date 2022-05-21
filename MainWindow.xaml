@@ -64,7 +64,7 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-            <Button Name="BUTTON_RUNAS" Click="RestartAsAdmin" Style="{StaticResource ButtonTransparent}" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="15" Width="25" Background="Transparent" BorderBrush="Transparent">
+            <Button Name="BUTTON_RUNAS" Click="RestartAsAdmin" Style="{StaticResource ButtonTransparent}" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="21" Width="28" Background="Transparent" BorderBrush="Transparent">
                 <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="/uac.png"/>
             </Button>
 
