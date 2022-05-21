@@ -1,0 +1,86 @@
+﻿<fw:AcrylicWindow x:Class="SupportHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SupportHelper"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:fluentui="clr-namespace:FluentUI;assembly=FluentUI.NET"  
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="700"
+        ContentRendered="Window_ContentRendered" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="194"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <!-- Left menu -->
+        <Grid fw:PointerTracker.Enabled="True" Background="#01FFFFFF">
+            <StackPanel>
+                <TextBlock  FontSize="15" Text="System" Padding="10,5,10,5"/>
+                <ListView FontSize="14" Background="Transparent" Foreground="#FFE4E4E4" BorderBrush="{x:Null}">
+                    <ListViewItem Padding="10,5,10,5" Style="{StaticResource WhiteOver}">
+                        <StackPanel Orientation="Horizontal">
+                            <fluentui:FabricIcon Icon="ThisPC" VerticalAlignment="Center"/>
+                            <TextBlock Text="This PC" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="10,5,10,5" Style="{StaticResource WhiteOver}">
+                        <StackPanel Orientation="Horizontal">
+                            <fluentui:FabricIcon Icon="LaptopSecure" VerticalAlignment="Center"/>
+                            <TextBlock Text="Security" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="10,5,10,5" Style="{StaticResource WhiteOver}">
+                        <StackPanel Orientation="Horizontal">
+                            <fluentui:FabricIcon Icon="WifiEthernet" VerticalAlignment="Center"/>
+                            <TextBlock Text="Connectivity" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+
+                <TextBlock  FontSize="15" Text="Apps" Padding="10,5,10,5"/>
+                <ListView FontSize="14" Background="Transparent" Foreground="#FFE4E4E4" BorderBrush="{x:Null}">
+                    <ListViewItem Padding="10,5,10,5" Style="{StaticResource WhiteOver}">
+                        <StackPanel Orientation="Horizontal">
+                            <fluentui:FabricIcon Icon="OfficeLogo" VerticalAlignment="Center"/>
+                            <TextBlock Text="Office 365" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+
+        <!-- Content -->
+        <Grid Grid.Column="1" Background="White">
+
+            <StackPanel Margin="10,5,10,5">
+
+                <StackPanel  Orientation="Horizontal">
+                    <Label Content="Name:" FontWeight="Bold" />
+                    <Label Content="" Name="LABEL_NAME" />
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal">
+                    <Label Content="Feature Update:" FontWeight="Bold" />
+                    <Label Content="" Name="LABEL_VERSION" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Quality Update:" FontWeight="Bold" />
+                    <Label  xml:space="preserve" Content="" Name="LABEL_PATCH" FontFamily="Consolas"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Users:" FontWeight="Bold" />
+                    <Label  xml:space="preserve" Content="" Name="LABEL_USERS" FontFamily="Consolas"/>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</fw:AcrylicWindow>
