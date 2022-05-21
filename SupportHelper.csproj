@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="uac.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentUI.NET" Version="1.0.51" />
     <PackageReference Include="FluentWPF" Version="0.10.2" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.4" />
     <PackageReference Include="System.Management.Automation" Version="7.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="uac.png" />
   </ItemGroup>
 
 </Project>

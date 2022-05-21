@@ -19,7 +19,7 @@
 
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="ListBoxItem"
+            <Style TargetType="ListViewItem"
                x:Key="WhiteOver">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -84,6 +84,74 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+
+            <Style TargetType="Button"
+               x:Key="ButtonTransparent">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                                                Padding="{TemplateBinding Control.Padding}"
+                                                BorderBrush="{x:Null}"
+                                                Background="{TemplateBinding Panel.Background}"
+                                                Name="Bd"
+                                                SnapsToDevicePixels="True">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                                                               ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                                               ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                                                               HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                                               VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                                               SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                        <Condition Property="Selector.IsSelected" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Panel.Background" TargetName="Bd" 
+                        Value="Transparent"/>
+                                    <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                        <Setter.Value>
+                                            <SolidColorBrush>Transparent</SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                        <Condition Property="Selector.IsSelected" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Panel.Background" TargetName="Bd" Value="Transparent"/>
+                                    <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                        <Setter.Value>
+                                            <SolidColorBrush>Transparent</SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </MultiTrigger>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Panel.Background" TargetName="Bd" 
+                       Value="#10DADADA"/>
+                                    <Setter Property="Border.BorderBrush" TargetName="Bd">
+                                        <Setter.Value>
+                                            <SolidColorBrush>Transparent</SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="UIElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" TargetName="Bd">
+                                        <Setter.Value>
+                                            <SolidColorBrush>Transparent</SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </ResourceDictionary>
 
 
